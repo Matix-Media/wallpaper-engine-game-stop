@@ -99,6 +99,7 @@ else:
 
 print("\n\n")
 # Main loop
+pause_lasted = False
 while True:
     print("  > Getting running proccesses...")
     processes = psutil.process_iter()
@@ -121,12 +122,21 @@ while True:
             break
 
     if games_running:
-        print(
-            f"      - Found running game (\"{running_game}\"). Stopping Wallpaper engine.")
-        proc = run_subproc("\"" + wpa_path + "\" -control pause")
+        if not pause_lasted:
+            print(
+                f"      - Found running game (\"{running_game}\"). Stopping Wallpaper engine.")
+            proc = run_subproc("\"" + wpa_path + "\" -control pause")
+            pause_lasted = True
+        else:
+            print(
+                f"      - Found running game (\"{running_game}\"). Already stopped Wallpaper engine.")
     else:
-        print("      - No running games found. Starting Wallpaper engine.")
-        proc = run_subproc("\"" + wpa_path + "\" -control play")
+        if pause_lasted:
+            print("      - No running games found. Starting Wallpaper engine.")
+            proc = run_subproc("\"" + wpa_path + "\" -control play")
+            pause_lasted = False
+        else:
+            print("      - No running games found. Already started Wallpaper engine.")
 
     print("\n")
 
