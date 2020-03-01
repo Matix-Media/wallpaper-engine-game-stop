@@ -1,4 +1,4 @@
-![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Matix-Media/wallpaper-engine-game-stop?include_prereleases)
+![GitHub Release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Matix-Media/wallpaper-engine-game-stop?include_prereleases)
 # wallpaper-engine-game-stop
 An simple python script wich stops wallpaper engine when an game is running.  
 *(Windows Only)*
