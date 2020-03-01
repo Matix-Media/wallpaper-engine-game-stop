@@ -7,9 +7,17 @@ from urllib import request
 import urllib.error
 from json import load as load_json, loads as load_json_str, JSONDecodeError
 from os import system as run_subproc
+from sys import argv as startup_args
+import ctypes
 
 
 print("Booting...\n")
+
+if len(startup_args) > 1:
+    if startup_args[1] == "--hidden":
+        print("App started in hidden mode.\n")
+        ctypes.windll.user32.ShowWindow(
+            ctypes.windll.kernel32.GetConsoleWindow(), 0)
 
 # Check if windows
 if platform.architecture()[1] != "WindowsPE":
