@@ -3,6 +3,8 @@
 An simple python script wich stops wallpaper engine when an game is running.  
 *(Windows Only)*
 
+**NOTE:** For the current version it is important that wallpaper engine is in the steam installation directory saved.
+
 **Version:** 0.1.1
 
 **Want to add your game to the list?**  
