@@ -15,7 +15,7 @@ Write an issue with the label `list-add-request` and write your game executable 
 2. Write `shell:startup` in the window wich poped up
 3. Press `Enter`
 4. Create a new shortcut by right clicking > New > Shortcut
-5. Paste in the path to the `wallpaper-engine-game-stop.exe` file and put a ` --hidden` after the path
+5. Paste in the path to the `output/Wallpaper Engine - Game Stop.exe` file and put a ` --hidden` after the path
 6. Click on next then on Finish
 
 Now the application will start hidden everytime you start your computer 
