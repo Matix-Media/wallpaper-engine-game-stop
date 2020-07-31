@@ -9,6 +9,7 @@ from json import load as load_json, loads as load_json_str, JSONDecodeError
 from os import system as run_subproc
 from sys import argv as startup_args
 import ctypes
+from winreg import *
 
 
 print("Booting...\n")
@@ -33,7 +34,7 @@ try:
         data = load_json(json_file)
         settings = data
 except (JSONDecodeError, FileNotFoundError, FileExistsError) as e:
-    print("WRN: Can not load settings.")
+    print("Using built in settings.")
 
 
 # Load games
@@ -44,7 +45,7 @@ try:
         data = load_json(json_file)
         games = data
 except (JSONDecodeError, FileNotFoundError, FileExistsError) as e:
-    print("WRN: Can not read local games file.")
+    print("Using online game files.")
 
 if settings["get_online_database"]:
     try:
@@ -56,15 +57,14 @@ if settings["get_online_database"]:
             games.append(game)
 
     except urllib.error as e:
-        print("WRN: Can not get games from online list.")
+        print("Could not get online game files.")
 
 
 # Get reg path
+print("Detecting Platform...")
 if not platform.machine().endswith('64'):
-    print("Detected 32bit Platform.")
     aKey = "SOFTWARE\\Valve\\Steam"
 else:
-    print("Detected 64bit Platform.")
     aKey = "SOFTWARE\\Wow6432Node\\Valve\\Steam"
 
 
@@ -72,7 +72,7 @@ else:
 aReg = ConnectRegistry(None, HKEY_LOCAL_MACHINE)
 
 
-print("Getting Steam Installation Folder..")
+print("Getting Steam Installation Folder...")
 
 
 # Get value
@@ -94,19 +94,16 @@ if not path.exists(wpa_path):
     print("Wallpaper engine is not installed in this system.")
     exit(1)
 else:
-    print("Wallpaper engine is installed.")
+    pass
 
 
 print("\n\n")
 # Main loop
 pause_lasted = False
 while True:
-    print("  > Getting running proccesses...")
     processes = psutil.process_iter()
     games_running = False
     running_game = ""
-
-    print("    - Checking if processes containing games...")
 
     for p in processes:
         for game in games:
@@ -124,20 +121,17 @@ while True:
     if games_running:
         if not pause_lasted:
             print(
-                f"      - Found running game (\"{running_game}\"). Stopping Wallpaper engine.")
+                f"Found \"{running_game}\" - stopping Wallpaper Engine")
             proc = run_subproc("\"" + wpa_path + "\" -control pause")
             pause_lasted = True
         else:
-            print(
-                f"      - Found running game (\"{running_game}\"). Already stopped Wallpaper engine.")
+            pass
     else:
         if pause_lasted:
-            print("      - No running games found. Starting Wallpaper engine.")
             proc = run_subproc("\"" + wpa_path + "\" -control play")
             pause_lasted = False
+            print(f"Nothing found - playing Wallpaper Engine")
         else:
-            print("      - No running games found. Already started Wallpaper engine.")
-
-    print("\n")
+            pass
 
     sleep(settings["check_delay"])
