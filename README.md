@@ -11,7 +11,7 @@ An simple python script wich stops wallpaper engine when an game is running.
 Write an issue with the label `list-add-request` and write your game executable name into the issue.
 
 ## How to open on startup
-0. Download `Wallpaper Engine - Game Stop.exe` from [here](https://github.com/Matix-Media/wallpaper-engine-game-stop/releases)
+0. Download `Wallpaper Engine - Game Stop.exe` from [here](https://github.com/Matix-Media/wallpaper-engine-game-stop/releases/download/v1.0.1/Wallpaper-Engine-Game-Stop.exe)
 1. Press `WIN` + `R` on your keyboard
 2. Write `shell:startup` in the window wich poped up
 3. Press `Enter`
