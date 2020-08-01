@@ -1,6 +1,6 @@
 <a href="https://github.com/Matix-Media/wallpaper-engine-game-stop/releases" target="_blank">![GitHub Release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Matix-Media/wallpaper-engine-game-stop?include_prereleases)</a>
 # Wallpaper Engine - Game Stop
-An simple python script wich stops wallpaper engine when an game is running.  
+A simple python script which stops wallpaper engine when a game is running.  
 *(Windows Only)*
 
 **NOTE:** For the current version it is important that wallpaper engine is in the steam installation directory saved.
