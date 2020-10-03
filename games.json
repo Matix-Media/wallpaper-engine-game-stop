@@ -151,5 +151,7 @@
     "Paladins.exe",
     "SoTGame.exe",
     "Europa_Client.exe",
-    "RainbowSix.exe"
+    "RainbowSix.exe",
+    "RainbowSix_Vulkan.exe",
+    "RainbowSix_BE.exe"
 ]
